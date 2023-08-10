@@ -47,7 +47,7 @@ export default function App() {
         }}
       >
         <div>
-          <Button variant="outline" color="dark" onClick={playPause}>
+          <Button variant="outline" color="orange" onClick={playPause}>
             {isPlaying ? "PAUSE" : "PLAY"}
           </Button>
         </div>
@@ -101,14 +101,14 @@ function CameraRig() {
 function Lightformers({ positions = [2, 0, 2, 0, 2, 0, 2, 0] }) {
   const group = useRef();
   const gradient = useRef();
-  useFrame((state, delta) => {
-    (group.current.position.z += delta * 10) > 20 &&
-      (group.current.position.z = -60);
-  });
+  // useFrame((state, delta) => {
+  //   (group.current.position.z += delta * 10) > 20 &&
+  //     (group.current.position.z = -60);
+  // });
   return (
     <>
       {/* Ceiling */}
-      <Lightformer
+      {/* <Lightformer
         intensity={0.75}
         rotation-x={Math.PI / 2}
         position={[0, 5, -9]}
@@ -127,7 +127,7 @@ function Lightformers({ positions = [2, 0, 2, 0, 2, 0, 2, 0] }) {
             />
           ))}
         </group>
-      </group>
+      </group> */}
       {/* Sides */}
       <Lightformer
         intensity={8}
@@ -157,7 +157,8 @@ function Lightformers({ positions = [2, 0, 2, 0, 2, 0, 2, 0] }) {
         />
       </Float>
       {/* Background */}
-      <mesh scale={50}>
+      {/* <group ref={group}> */}
+      <mesh scale={100}>
         <sphereGeometry args={[1, 64, 64]} />
         <LayerMaterial side={THREE.BackSide}>
           <Color color="#26194E" alpha={1} mode="normal" />
@@ -172,6 +173,7 @@ function Lightformers({ positions = [2, 0, 2, 0, 2, 0, 2, 0] }) {
           />
         </LayerMaterial>
       </mesh>
+      {/* </group> */}
     </>
   );
 }
