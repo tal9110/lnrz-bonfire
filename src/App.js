@@ -65,10 +65,10 @@ export default function App() {
         <Model playing={isPlaying} />
         <Model2 playing={isPlaying} />
 
-        <PerformanceMonitor onDecline={() => degrade(true)} />
+        {/* <PerformanceMonitor onDecline={() => degrade(true)} /> */}
         <Environment
-          frames={degraded ? 1 : Infinity}
-          resolution={256}
+          // frames={degraded ? 1 : Infinity}
+          resolution={512}
           background
           blur={1}
         >
