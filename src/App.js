@@ -88,7 +88,7 @@ function CameraRig() {
         -1 + (state.pointer.x * state.viewport.width) / 1.5,
 
         // (1 + state.pointer.y) / 0.5,
-        1 + state.pointer.y,
+        1 + state.pointer.y * 2,
         15,
       ],
       0.5,
@@ -100,11 +100,11 @@ function CameraRig() {
 
 function Lightformers({ positions = [2, 0, 2, 0, 2, 0, 2, 0] }) {
   const group = useRef();
-  useFrame(
-    (state, delta) =>
-      (group.current.position.z += delta * 10) > 20 &&
-      (group.current.position.z = -60)
-  );
+  const gradient = useRef();
+  useFrame((state, delta) => {
+    (group.current.position.z += delta * 10) > 20 &&
+      (group.current.position.z = -60);
+  });
   return (
     <>
       {/* Ceiling */}
@@ -157,13 +157,13 @@ function Lightformers({ positions = [2, 0, 2, 0, 2, 0, 2, 0] }) {
         />
       </Float>
       {/* Background */}
-      <mesh scale={100}>
+      <mesh scale={50}>
         <sphereGeometry args={[1, 64, 64]} />
         <LayerMaterial side={THREE.BackSide}>
-          <Color color="black" alpha={1} mode="normal" />
+          <Color color="#26194E" alpha={1} mode="normal" />
           <Depth
             colorA="black"
-            colorB="black"
+            colorB="#26194E"
             alpha={0.9}
             mode="normal"
             near={0}
