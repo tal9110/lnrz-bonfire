@@ -7,11 +7,12 @@ import { useRef, useState } from "react";
 import { easing } from "maath";
 import { PerformanceMonitor, Float } from "@react-three/drei";
 import { LayerMaterial, Color, Depth } from "lamina";
-import Model from "./Model";
-import Model2 from "./Model2";
+import AllModels from "./AllModels";
 import song from "./withoutYou.mp3";
 import { Button, Center } from "@mantine/core";
 import * as React from "react";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
+import { BlurPass, Resizer, KernelSize, Resolution } from "postprocessing";
 
 export default function App() {
   const texture = useLoader(LUTCubeLoader, "/F-6800-STD.cube");
@@ -53,6 +54,8 @@ export default function App() {
         </div>
       </div>
       <Canvas shadows camera={{ position: [5, 0, 15], fov: 30 }}>
+        <directionalLight intensity={1} color="white" position={[0, 5, 5]} />
+
         <spotLight
           position={[0, 15, 0]}
           angle={0.3}
@@ -62,8 +65,11 @@ export default function App() {
           shadow-bias={-0.0001}
         />
         <ambientLight intensity={0.8} />
-        <Model playing={isPlaying} />
+        <AllModels playing={isPlaying} handlePlayPause={playPause} />
+        {/* <Model playing={isPlaying} />
         <Model2 playing={isPlaying} />
+        <Model3 playing={isPlaying} />
+        <Model4 playing={isPlaying} handlePlayPause={playPause} /> */}
 
         {/* <PerformanceMonitor onDecline={() => degrade(true)} /> */}
         <Environment
@@ -74,7 +80,16 @@ export default function App() {
         >
           <Lightformers />
         </Environment>
-        {!isPlaying && <CameraRig />}
+        {/* {!isPlaying && <CameraRig />} */}
+        <CameraRig />
+        {/* <EffectComposer>
+          <Bloom
+            intensity={5}
+            // luminanceThreshold={0}
+            // luminanceSmoothing={0.9}
+            // height={300}
+          />
+        </EffectComposer> */}
       </Canvas>
     </>
   );

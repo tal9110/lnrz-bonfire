@@ -3,13 +3,17 @@ import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { MeshTransmissionMaterial } from "@react-three/drei";
 import * as THREE from "three";
+import { easing } from "maath";
 
 export default function Model2(props) {
-  const { nodes, materials } = useGLTF("/diskClear.glb");
+  const { nodes, materials } = useGLTF("/diskClearFinal.glb");
   const diskRef = useRef();
+  let time = 0;
+
   useFrame((state, delta) => {
     if (props.playing) {
-      diskRef.current.rotation.y += delta / 1.5;
+      // diskRef.current.rotation.y = (Math.PI / 2) * Math.sin(delta);
+      // diskRef.current.rotation.y += delta / 2;
     }
   });
   const roughnessMapTexture = new THREE.TextureLoader().load("roughness.jpg");
