@@ -64,7 +64,7 @@ export default function App() {
           intensity={2}
           shadow-bias={-0.0001}
         />
-        <ambientLight intensity={0.8} />
+        <ambientLight intensity={2} />
         <AllModels playing={isPlaying} handlePlayPause={playPause} />
         {/* <Model playing={isPlaying} />
         <Model2 playing={isPlaying} />
@@ -144,7 +144,7 @@ function Lightformers({ positions = [2, 0, 2, 0, 2, 0, 2, 0] }) {
         </group>
       </group> */}
       {/* Sides */}
-      <Lightformer
+      {/* <Lightformer
         intensity={8}
         rotation-y={Math.PI / 2}
         position={[-5, 1, -1]}
@@ -159,9 +159,9 @@ function Lightformers({ positions = [2, 0, 2, 0, 2, 0, 2, 0] }) {
         rotation-y={-Math.PI / 2}
         position={[10, 1, 0]}
         scale={[20, 1, 1]}
-      />
+      /> */}
       {/* Accent (red) */}
-      <Float speed={5} floatIntensity={2} rotationIntensity={2}>
+      {/* <Float speed={5} floatIntensity={2} rotationIntensity={2}>
         <Lightformer
           form="ring"
           color="#26194E"
@@ -170,10 +170,10 @@ function Lightformers({ positions = [2, 0, 2, 0, 2, 0, 2, 0] }) {
           position={[-15, 4, -18]}
           target={[0, 0, 0]}
         />
-      </Float>
+      </Float> */}
       {/* Background */}
       {/* <group ref={group}> */}
-      <mesh scale={100}>
+      {/* <mesh scale={100}>
         <sphereGeometry args={[1, 64, 64]} />
         <LayerMaterial side={THREE.BackSide}>
           <Color color="#26194E" alpha={1} mode="normal" />
@@ -187,7 +187,7 @@ function Lightformers({ positions = [2, 0, 2, 0, 2, 0, 2, 0] }) {
             origin={[100, 100, 100]}
           />
         </LayerMaterial>
-      </mesh>
+      </mesh> */}
       {/* </group> */}
     </>
   );
