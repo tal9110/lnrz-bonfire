@@ -53,6 +53,7 @@ export default function App() {
           </Button>
         </div>
       </div>
+      {/* <div> */}
       <Canvas shadows camera={{ position: [5, 0, 15], fov: 30 }}>
         <directionalLight intensity={1} color="white" position={[0, 5, 5]} />
 
@@ -72,14 +73,14 @@ export default function App() {
         <Model4 playing={isPlaying} handlePlayPause={playPause} /> */}
 
         {/* <PerformanceMonitor onDecline={() => degrade(true)} /> */}
-        <Environment
-          // frames={degraded ? 1 : Infinity}
-          resolution={512}
-          background
-          blur={1}
-        >
-          <Lightformers />
-        </Environment>
+        {/* <Environment
+            // frames={degraded ? 1 : Infinity}
+            resolution={512}
+            background
+            blur={1}
+          >
+            <Lightformers />
+          </Environment> */}
         {/* {!isPlaying && <CameraRig />} */}
         <CameraRig />
         {/* <EffectComposer>
@@ -91,6 +92,7 @@ export default function App() {
           />
         </EffectComposer> */}
       </Canvas>
+      {/* </div> */}
     </>
   );
 }
