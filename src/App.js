@@ -13,8 +13,19 @@ import { Button, Center } from "@mantine/core";
 import * as React from "react";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { BlurPass, Resizer, KernelSize, Resolution } from "postprocessing";
+// import { RectAreaLightHelper } from "three/examples/jsm/helpers/RectAreaLightHelper";
+// import { RectAreaLightUniformsLib } from "three/examples/jsm/lights/RectAreaLightUniformsLib.js";
+// import { RectAreaLightUniformsLib } from 'three';
+import { RectAreaLightUniformsLib } from "three/examples/jsm/lights/RectAreaLightUniformsLib.js";
+import { Effects } from "@react-three/drei";
+import { UnrealBloomPass, BloomPass, AfterimagePass } from "three-stdlib";
+import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass";
+
+extend({ UnrealBloomPass, OutputPass, BloomPass, AfterimagePass });
 
 export default function App() {
+  // const brown = import("/brown.exr").then((module) => module.default);
+
   const texture = useLoader(LUTCubeLoader, "/F-6800-STD.cube");
   const [degraded, degrade] = useState(false);
   const diskRef = useRef();
@@ -35,6 +46,8 @@ export default function App() {
     setIsPlaying(!isPlaying);
   };
 
+  RectAreaLightUniformsLib.init();
+
   return (
     <>
       <div
@@ -54,18 +67,56 @@ export default function App() {
         </div>
       </div>
       {/* <div> */}
-      <Canvas shadows camera={{ position: [5, 0, 15], fov: 30 }}>
-        <directionalLight intensity={1} color="white" position={[0, 5, 5]} />
+      <Canvas
+        // flat={true}
+        // linear={false}
+        gl={{ alpha: true }}
+        shadows
+        camera={{ position: [5, 0, 15], fov: 30 }}
+      >
+        <Environment files={"/brownMiddle.exr"} />
+        {/* <Effects disableGamma={true}>
+          <unrealBloomPass threshold={0.5} strength={0.6} radius={0} />
+          <afterimagePass attachArray="passes" args={[0.95]} />
 
-        <spotLight
+          <outputPass args={[THREE.ACESFilmicToneMapping]} />
+        </Effects> */}
+
+        {/* <rectAreaLight
+          width={6}
+          height={6}
+          color={"#ffffff"}
+          intensity={4}
+          position={[6, 6, 5]}
+          lookAt={[0, 0, 0]}
+        /> */}
+        <rectAreaLight
+          width={5}
+          height={5}
+          color={"#ffffff"}
+          intensity={6}
+          position={[5, 5, 5]}
+          lookAt={[0, 0, 0]}
+        />
+        {/* <rectAreaLight
+          width={10}
+          height={10}
+          color={"#ffffff"}
+          intensity={10}
+          position={[0, 0, -5]}
+          lookAt={[0, 0, 0]}
+        /> */}
+        {/* <directionalLight intensity={2} color="white" position={[0, 5, 5]} /> */}
+
+        {/* <spotLight
           position={[0, 15, 0]}
           angle={0.3}
           penumbra={1}
           castShadow
-          intensity={2}
+          intensity={1}
           shadow-bias={-0.0001}
-        />
-        <ambientLight intensity={2} />
+        /> */}
+        {/* <ambientLight intensity={2} /> */}
         <AllModels playing={isPlaying} handlePlayPause={playPause} />
         {/* <Model playing={isPlaying} />
         <Model2 playing={isPlaying} />
