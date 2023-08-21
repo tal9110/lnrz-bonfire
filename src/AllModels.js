@@ -24,13 +24,11 @@ export default function AllModels(props) {
 
   return (
     <>
-      <group ref={groupRef}>
+      <group ref={groupRef} onClick={props.handlePlayPause}>
         <Model playing={props.playing} />
         <Model2 playing={props.playing} />
         <Model3 playing={props.playing} />
-        <group onClick={props.handlePlayPause}>
-          <Model4 playing={props.playing} handlePlayPause={props.playPause} />
-        </group>
+        <Model4 playing={props.playing} handlePlayPause={props.playPause} />
       </group>
     </>
   );

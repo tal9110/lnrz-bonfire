@@ -52,6 +52,7 @@ export default function App() {
     <>
       <div
         style={{
+          background: "transparent",
           zIndex: 100,
           position: "absolute",
 
@@ -60,11 +61,11 @@ export default function App() {
           transform: "translate(-50%, -50%)",
         }}
       >
-        <div>
+        {/* <div>
           <Button variant="outline" color="orange" onClick={playPause}>
             {isPlaying ? "PAUSE" : "PLAY"}
           </Button>
-        </div>
+        </div> */}
       </div>
       {/* <div> */}
       <Canvas
