@@ -27,7 +27,7 @@ export default function Model(props) {
       const intensity = 0.5 * Math.sin(pulse) + 0.5;
 
       materialRef.current.material.emissiveIntensity = intensity;
-      materialRef.current.material.emissive.set(0xffffff); // Setting emissive color to green
+      materialRef.current.material.emissive.set("#BD4A0B"); // Setting emissive color to green
     }
   });
 
