@@ -28,7 +28,7 @@ export default function AllModels(props) {
         <Model playing={props.playing} />
         <Model2 playing={props.playing} />
         <Model3 playing={props.playing} />
-        <Model4 playing={props.playing} handlePlayPause={props.playPause} />
+        <Model4 playing={props.playing} />
       </group>
     </>
   );
