@@ -22,9 +22,20 @@ export default function AllModels(props) {
     lastElapsedTime.current = state.clock.getElapsedTime();
   });
 
+  const [hovered, setHovered] = React.useState(false);
+  React.useEffect(() => {
+    // Change the cursor style depending on whether the group is hovered or not
+    document.body.style.cursor = hovered ? "pointer" : "auto";
+  }, [hovered]);
+
   return (
     <>
-      <group ref={groupRef} onClick={props.handlePlayPause}>
+      <group
+        onPointerOver={() => setHovered(true)}
+        onPointerOut={() => setHovered(false)}
+        ref={groupRef}
+        onClick={props.handlePlayPause}
+      >
         <Model playing={props.playing} />
         <Model2 playing={props.playing} />
         <Model3 playing={props.playing} />
