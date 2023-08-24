@@ -20,14 +20,12 @@ export default function Model(props) {
 
   useFrame((state, delta) => {
     if (materialRef.current) {
-      // Increase pulse by delta for normal speed
       pulse += delta * 1.5;
 
-      // Remapping sine result to [0, 1]
       const intensity = 0.5 * Math.sin(pulse) + 0.5;
 
       materialRef.current.material.emissiveIntensity = intensity;
-      materialRef.current.material.emissive.set("#BD4A0B"); // Setting emissive color to green
+      materialRef.current.material.emissive.set("#BD4A0B");
     }
   });
 
@@ -47,16 +45,7 @@ export default function Model(props) {
         geometry={nodes.SUBSTANCE_IN_01002.geometry}
         material={materials["/obj/file1/matnet1/PLASTIC"]}
         rotation={[Math.PI / 2, 0, 0]}
-      >
-        {/* <shaderMaterial
-          ref={materialRef}
-          vertexShader={vertexShader}
-          fragmentShader={fragmentShader}
-          uniforms={{
-            time: { value: 0 },
-          }} */}
-        {/* /> */}
-      </mesh>
+      ></mesh>
     </group>
   );
 }

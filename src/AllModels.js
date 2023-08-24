@@ -8,14 +8,13 @@ import { useFrame } from "@react-three/fiber";
 
 export default function AllModels(props) {
   const groupRef = React.useRef();
-  let accumulatedTime = React.useRef(0); // Accumulated time reference
+  let accumulatedTime = React.useRef(0);
   let lastElapsedTime = React.useRef(0);
   useFrame((state) => {
     if (props.playing) {
       const delta = state.clock.getElapsedTime() - lastElapsedTime.current;
       accumulatedTime.current += delta;
 
-      // Here, use the accumulatedTime instead of the immediate elapsed time.
       groupRef.current.rotation.y =
         (Math.PI / 4) * Math.sin(accumulatedTime.current);
     }
@@ -24,7 +23,6 @@ export default function AllModels(props) {
 
   const [hovered, setHovered] = React.useState(false);
   React.useEffect(() => {
-    // Change the cursor style depending on whether the group is hovered or not
     document.body.style.cursor = hovered ? "pointer" : "auto";
   }, [hovered]);
 

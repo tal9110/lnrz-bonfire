@@ -1,22 +1,11 @@
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
 import { MeshTransmissionMaterial } from "@react-three/drei";
-import * as THREE from "three";
-import { easing } from "maath";
 
 export default function Model2(props) {
   const { nodes, materials } = useGLTF("/diskClearFinal.glb");
   const diskRef = useRef();
   let time = 0;
-
-  useFrame((state, delta) => {
-    if (props.playing) {
-      // diskRef.current.rotation.y = (Math.PI / 2) * Math.sin(delta);
-      // diskRef.current.rotation.y += delta / 2;
-    }
-  });
-  const roughnessMapTexture = new THREE.TextureLoader().load("roughness.jpg");
 
   return (
     <group ref={diskRef} scale={25} {...props} dispose={null}>
@@ -45,9 +34,6 @@ export default function Model2(props) {
           clearcoat={1}
           attenuationDistance={5}
           attenuationColor="#ffffff"
-          //   roughnessMapMap={roughnessMapTexture}
-          //   color="#c9ffa1"
-          //   background={new THREE.Color("#839681")}
         />
       </mesh>
     </group>

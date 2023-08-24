@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import { easing } from "maath";
 
 export default function Model(props) {
   const { nodes, materials } = useGLTF("/cdFinal.glb");
@@ -15,8 +14,6 @@ export default function Model(props) {
   }, []);
   useFrame((state, delta) => {
     if (props.playing) {
-      // diskRef.current.rotation.y += delta / 2;
-      //   diskRef.current.rotation.y = (Math.PI / 2) * Math.sin(delta);
       diskRef.current.rotation.z += delta / 3.5;
     }
   });
