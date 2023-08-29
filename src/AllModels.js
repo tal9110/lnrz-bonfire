@@ -7,6 +7,7 @@ import { useFrame } from "@react-three/fiber";
 import { isMobile } from "react-device-detect";
 
 export default function AllModels(props) {
+  // test
   const groupRef = React.useRef();
   let accumulatedTime = React.useRef(0);
   let lastElapsedTime = React.useRef(0);
