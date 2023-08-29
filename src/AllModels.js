@@ -3,7 +3,6 @@ import Model from "./Model";
 import Model2 from "./Model2";
 import Model3 from "./Model3";
 import Model4 from "./Model4";
-import { useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import { isMobile } from "react-device-detect";
 
