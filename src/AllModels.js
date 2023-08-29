@@ -35,7 +35,7 @@ export default function AllModels(props) {
           onPointerOut={() => setHovered(false)}
           ref={groupRef}
           onClick={props.handlePlayPause}
-          scale={1.1}
+          scale={1}
         >
           <Model playing={props.playing} />
           <Model2 playing={props.playing} />

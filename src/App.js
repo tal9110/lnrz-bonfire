@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { Environment } from "@react-three/drei";
-import { extend, useFrame, useThree } from "@react-three/fiber";
+import { extend, useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import { easing } from "maath";
 import AllModels from "./AllModels";
