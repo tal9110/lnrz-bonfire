@@ -9,6 +9,7 @@ import * as React from "react";
 import { RectAreaLightUniformsLib } from "three/examples/jsm/lights/RectAreaLightUniformsLib.js";
 import { UnrealBloomPass, BloomPass, AfterimagePass } from "three-stdlib";
 import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass";
+import { isMobile } from "react-device-detect";
 
 extend({ UnrealBloomPass, OutputPass, BloomPass, AfterimagePass });
 

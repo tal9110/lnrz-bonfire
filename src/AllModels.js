@@ -5,6 +5,7 @@ import Model3 from "./Model3";
 import Model4 from "./Model4";
 import { useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
+import { isMobile } from "react-device-detect";
 
 export default function AllModels(props) {
   const groupRef = React.useRef();
@@ -28,17 +29,33 @@ export default function AllModels(props) {
 
   return (
     <>
-      <group
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
-        ref={groupRef}
-        onClick={props.handlePlayPause}
-      >
-        <Model playing={props.playing} />
-        <Model2 playing={props.playing} />
-        <Model3 playing={props.playing} />
-        <Model4 playing={props.playing} />
-      </group>
+      {isMobile ? (
+        <group
+          onPointerOver={() => setHovered(true)}
+          onPointerOut={() => setHovered(false)}
+          ref={groupRef}
+          onClick={props.handlePlayPause}
+          scale={1.1}
+        >
+          <Model playing={props.playing} />
+          <Model2 playing={props.playing} />
+          <Model3 playing={props.playing} />
+          <Model4 playing={props.playing} />
+        </group>
+      ) : (
+        <group
+          onPointerOver={() => setHovered(true)}
+          onPointerOut={() => setHovered(false)}
+          ref={groupRef}
+          onClick={props.handlePlayPause}
+          scale={1.5}
+        >
+          <Model playing={props.playing} />
+          <Model2 playing={props.playing} />
+          <Model3 playing={props.playing} />
+          <Model4 playing={props.playing} />
+        </group>
+      )}
     </>
   );
 }
